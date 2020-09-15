@@ -1,0 +1,25 @@
+Contact information:
+Name - Tristan Thomas
+ID - 105771156
+Email - trth3572@colorado.edu
+
+Information on what each file contains:
+	- pa2_char_driver.c :
+    This contains the source code for the LKM. This contains the instructions for the driver to open, close, read, write, and seek. 
+  - devDrivTest.c :
+    This contains the test program for the device driver. It will open and close the device file as well as take input from the user to read, write, and seek. The read, write, and seek call the functions contained in the module pa2_char_driver
+
+Instructions for building and running your test program:
+    - Building pa2_char_driver.c :
+      > make -C /lib/modules/$(uname -r)/build M=$PWD modules
+    - Building devDrivTest.c :
+      > gcc devDrivTest.c -o run
+    - Inserting/Running pa2_char_driver.ko :
+      > sudo mknod -m 777 /dev/pa2_character_device c 245 0
+      > sudo insmod pa2_char_driver.ko
+    - Running test program :
+      > ./run
+      > Enter input as prompted
+      > Press 'e' to exit
+    - Removing pa2_char_driver :
+      > sudo rmmod pa2_char_driver
